@@ -27,6 +27,9 @@
                         case "Print":
                             listyIterator.Print();
                             break;
+                        case "PrintAll":
+                            listyIterator.PrintAll();
+                            break;
                     }
                 }
             }

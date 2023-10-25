@@ -1,4 +1,7 @@
-﻿class ListyIterator<T>{
+﻿using System.Collections;
+using System.Xml.Linq;
+
+class ListyIterator<T> : IEnumerable<T>{
     private List<T> element;
     private int currentIndex;
 
@@ -7,6 +10,7 @@
         this.element = new List<T>(element);
         this.currentIndex = 0;
     }
+
     public bool HasNext()
     {
         return currentIndex < element.Count - 1;
@@ -26,6 +30,22 @@
         else
         {
             Console.WriteLine(element[currentIndex]);
+        }
+    }
+    public IEnumerator<T> GetEnumerator()
+    {
+        foreach (T elements in element)
+        {
+            yield return elements;
+        }
+    }
+    IEnumerator IEnumerable.GetEnumerator()
+    {
+        return GetEnumerator();
+    }
+    public void PrintAll() {
+        foreach (T elements in element) {
+            Console.Write(elements + " ");
         }
     }
 }
